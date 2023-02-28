@@ -21,11 +21,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _loginformKey = GlobalKey<FormState>();
   bool _autoValidate = false;
 
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController unameController = TextEditingController();
+  TextEditingController pwdController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     TextFieldValidator validator = context.read<TextFieldValidator>();
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     height: 15,
                                   ),
                                   Form(
-                                    key: _formKey,
+                                    key: _loginformKey,
                                     child: Column(
                                       children: [
                                         SizedBox(
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   Color(0xFF262C48),
                                             ),
                                             child: TextFormField(
-                                              controller: usernameController,
+                                              controller: unameController,
                                               cursorColor: Colors.grey,
                                               validator: (value) {
                                                 return validator
@@ -200,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   Color(0xFF262C48),
                                             ),
                                             child: TextFormField(
-                                              controller: passwordController,
+                                              controller: pwdController,
                                               cursorColor: Colors.grey,
                                               validator: (value) {
                                                 return validator
@@ -283,15 +283,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                         child: TextButton(
                                             onPressed: () async {
-                                              if (_formKey.currentState!
+                                              if (_loginformKey.currentState!
                                                   .validate()) {
                                                 //    If all data are correct then save data to out variables
                                                 setState(() {
-                                                  _formKey.currentState!.save();
+                                                  _loginformKey.currentState!
+                                                      .save();
                                                 });
-                                                if (usernameController.text ==
+                                                if (unameController.text ==
                                                         provider.username &&
-                                                    passwordController.text ==
+                                                    pwdController.text ==
                                                         provider.password) {
                                                   Navigator.push(
                                                     context,

@@ -331,8 +331,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                 setState(() {
                                                   _formKey.currentState!.save();
                                                 });
-                                                await MongoDBConnection
-                                                    .dbConnect();
+
                                                 if (await MongoDBConnection
                                                     .insertUser(
                                                         User(

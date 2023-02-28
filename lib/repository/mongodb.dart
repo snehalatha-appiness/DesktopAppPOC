@@ -21,7 +21,7 @@ class MongoDBConnection {
       print(status);
     }
     DbCollection collection = db.collection(COLLECTION_NAME);
-    // User user = User(fullname: 'Sneha', username: 'sne', password: 'pass');
+
     // await collection.insertAll([user.toMap()]);
 
     print(await collection.find().toList());
@@ -29,10 +29,14 @@ class MongoDBConnection {
 
   static Future<bool> insertUser(User user) async {
     //collection = db.collection(COLLECTION_NAME);
+    Db db = await Db.create(MONGO_URL);
+    await db.open();
 
-    await collection.insertAll([user.toMap()]);
-    if (await collection.count != 0) {
-      print(await collection.find().toList());
+    DbCollection coll = db.collection(COLLECTION_NAME);
+    //User user = User(fullname: 'Sneha', username: 'sne', password: 'pass');
+    await coll.insertAll([user.toMap()]);
+    if (await coll.count != 0) {
+      print(await coll.find().toList());
       return true;
     } else {
       return false;
