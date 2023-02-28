@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:demo_poc_app/view/dashboard.dart';
 import 'package:demo_poc_app/view/homescreen.dart';
 import 'package:demo_poc_app/model/usermodel.dart';
 import 'package:demo_poc_app/repository/mongodb.dart';
@@ -288,6 +289,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 setState(() {
                                                   _formKey.currentState!.save();
                                                 });
+                                                if (usernameController.text ==
+                                                        provider.username &&
+                                                    passwordController.text ==
+                                                        provider.password) {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const DashboardScreen()),
+                                                  );
+                                                } else {
+                                                  Future.delayed(Duration.zero,
+                                                      () => showAlert(context));
+                                                }
                                                 // if (await MongoDBConnection
                                                 //     .insertUser(
                                                 //         User(
@@ -347,5 +362,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     });
+  }
+
+  void showAlert(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: Text("Please enter valid username or password"),
+            ));
   }
 }

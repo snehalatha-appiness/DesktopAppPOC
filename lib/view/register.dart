@@ -331,6 +331,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                 setState(() {
                                                   _formKey.currentState!.save();
                                                 });
+                                                await MongoDBConnection
+                                                    .dbConnect();
                                                 if (await MongoDBConnection
                                                     .insertUser(
                                                         User(
@@ -343,6 +345,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                             password:
                                                                 passwordController
                                                                     .text))) {
+                                                  provider.fname =
+                                                      fnameController.text;
+                                                  provider.username =
+                                                      usernameController.text;
+                                                  provider.password =
+                                                      passwordController.text;
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(

@@ -21,8 +21,8 @@ class MongoDBConnection {
       print(status);
     }
     DbCollection collection = db.collection(COLLECTION_NAME);
-    User user = User(fullname: 'Sneha', username: 'sne', password: 'pass');
-    await collection.insertAll([user.toMap()]);
+    // User user = User(fullname: 'Sneha', username: 'sne', password: 'pass');
+    // await collection.insertAll([user.toMap()]);
 
     print(await collection.find().toList());
   }
