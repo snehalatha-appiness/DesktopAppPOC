@@ -1,5 +1,5 @@
-import 'package:demo_poc_app/login.dart';
-import 'package:demo_poc_app/register.dart';
+import 'package:demo_poc_app/view/login.dart';
+import 'package:demo_poc_app/view/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';

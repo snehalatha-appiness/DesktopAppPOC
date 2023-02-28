@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:demo_poc_app/homescreen.dart';
+import 'package:demo_poc_app/view/homescreen.dart';
 import 'package:demo_poc_app/model/usermodel.dart';
-import 'package:demo_poc_app/mongodb.dart';
+import 'package:demo_poc_app/repository/mongodb.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/textfieldvalidators.dart';
 import 'package:flutter/material.dart';
@@ -12,17 +12,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
-  TextEditingController fnameController = TextEditingController();
+
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -77,8 +77,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 350,
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/registerbg.png'),
+                                    image:
+                                        AssetImage('assets/images/loginbg.png'),
                                     fit: BoxFit.cover)),
                           ),
                           Container(
@@ -148,48 +148,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     key: _formKey,
                                     child: Column(
                                       children: [
-                                        SizedBox(
-                                          height: 30,
-                                          child: Theme(
-                                            data: ThemeData(
-                                              primaryColor: Color(0xFF262C48),
-                                              primaryColorDark:
-                                                  Color(0xFF262C48),
-                                            ),
-                                            child: TextFormField(
-                                              controller: fnameController,
-                                              cursorColor: Colors.grey,
-                                              validator: (value) {
-                                                return validator
-                                                    .validateFname(value!);
-                                              },
-                                              decoration: const InputDecoration(
-                                                  labelText: 'Full name',
-
-                                                  // This is the normal border
-                                                  border: OutlineInputBorder(),
-                                                  labelStyle: TextStyle(
-                                                      color: Colors.grey,
-                                                      fontSize: 10),
-                                                  contentPadding:
-                                                      const EdgeInsets
-                                                              .symmetric(
-                                                          vertical: 10.0,
-                                                          horizontal: 10.0),
-                                                  // This is the error border
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 5))),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
                                         SizedBox(
                                           height: 30,
                                           child: Theme(
@@ -330,25 +288,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                 setState(() {
                                                   _formKey.currentState!.save();
                                                 });
-                                                if (await MongoDBConnection
-                                                    .insertUser(
-                                                        User(
-                                                            fullname:
-                                                                fnameController
-                                                                    .text,
-                                                            username:
-                                                                usernameController
-                                                                    .text,
-                                                            password:
-                                                                passwordController
-                                                                    .text))) {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const HomeScreen()),
-                                                  );
-                                                }
+                                                // if (await MongoDBConnection
+                                                //     .insertUser(
+                                                //         User(
+                                                //             fullname:
+                                                //                 fnameController
+                                                //                     .text,
+                                                //             username:
+                                                //                 usernameController
+                                                //                     .text,
+                                                //             password:
+                                                //                 passwordController
+                                                //                     .text))) {
+                                                //   Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) =>
+                                                //             const HomeScreen()),
+                                                //   );
+                                                // }
                                               } else {
                                                 //    If all data are not valid then start auto validation.
                                                 setState(() {

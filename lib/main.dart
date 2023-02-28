@@ -1,5 +1,5 @@
-import 'package:demo_poc_app/homescreen.dart';
-import 'package:demo_poc_app/mongodb.dart';
+import 'package:demo_poc_app/view/homescreen.dart';
+import 'package:demo_poc_app/repository/mongodb.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/textfieldvalidators.dart';
 import 'package:flutter/material.dart';
