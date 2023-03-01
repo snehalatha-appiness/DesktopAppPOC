@@ -202,6 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             child: TextFormField(
                                               controller: pwdController,
                                               cursorColor: Colors.grey,
+                                              obscureText: true,
                                               validator: (value) {
                                                 return validator
                                                     .validateFname(value!);
@@ -290,10 +291,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   _loginformKey.currentState!
                                                       .save();
                                                 });
-                                                if (unameController.text ==
-                                                        provider.username &&
-                                                    pwdController.text ==
-                                                        provider.password) {
+                                                List<String> user =
+                                                    await MongoDBConnection
+                                                        .getUser(
+                                                            unameController
+                                                                .text,
+                                                            pwdController.text);
+                                                if (user.isNotEmpty) {
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
@@ -304,25 +308,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   Future.delayed(Duration.zero,
                                                       () => showAlert(context));
                                                 }
-                                                // if (await MongoDBConnection
-                                                //     .insertUser(
-                                                //         User(
-                                                //             fullname:
-                                                //                 fnameController
-                                                //                     .text,
-                                                //             username:
-                                                //                 usernameController
-                                                //                     .text,
-                                                //             password:
-                                                //                 passwordController
-                                                //                     .text))) {
-                                                //   Navigator.push(
-                                                //     context,
-                                                //     MaterialPageRoute(
-                                                //         builder: (context) =>
-                                                //             const HomeScreen()),
-                                                //   );
-                                                // }
                                               } else {
                                                 //    If all data are not valid then start auto validation.
                                                 setState(() {

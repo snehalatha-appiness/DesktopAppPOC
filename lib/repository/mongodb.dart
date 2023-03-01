@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:demo_poc_app/constants/constants.dart';
 import 'package:demo_poc_app/model/usermodel.dart';
+import 'package:demo_poc_app/repository/userpreferences.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 import 'dart:io' show Platform;
@@ -31,15 +32,30 @@ class MongoDBConnection {
     //collection = db.collection(COLLECTION_NAME);
     Db db = await Db.create(MONGO_URL);
     await db.open();
-
     DbCollection coll = db.collection(COLLECTION_NAME);
-    //User user = User(fullname: 'Sneha', username: 'sne', password: 'pass');
-    await coll.insertAll([user.toMap()]);
+    await coll.insert(user.toMap());
+    UserPreferences().saveUser(user);
     if (await coll.count != 0) {
       print(await coll.find().toList());
       return true;
     } else {
       return false;
     }
+  }
+
+  static Future<List<String>> getUser(String username, String password) async {
+    Db db = await Db.create(MONGO_URL);
+    await db.open();
+
+    print('Connected to database');
+
+    DbCollection coll = db.collection(COLLECTION_NAME);
+    var information = await coll.findOne(where.eq('username', username));
+    await db.close();
+    List<String> infoList = [
+      information!['username'],
+      information!['password']
+    ];
+    return infoList;
   }
 }

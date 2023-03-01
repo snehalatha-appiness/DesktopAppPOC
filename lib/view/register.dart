@@ -244,6 +244,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             child: TextFormField(
                                               controller: passwordController,
                                               cursorColor: Colors.grey,
+                                              obscureText: true,
                                               validator: (value) {
                                                 return validator
                                                     .validateFname(value!);
