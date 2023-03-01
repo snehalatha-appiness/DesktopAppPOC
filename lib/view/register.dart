@@ -47,10 +47,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  height: 54,
-                  child: Image.asset('assets/images/logowhite.png')),
               const SizedBox(
                 height: 80,
               ),
@@ -70,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ],
                     ),
                     width: 700,
-                    height: MediaQuery.of(context).size.height * 0.65,
+                    height: MediaQuery.of(context).size.height * 0.78,
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -106,7 +102,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     height: 15,
                                   ),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
                                     child: const Text.rich(
                                       TextSpan(
                                         text: 'HomePage >  ',
@@ -149,129 +147,79 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     key: _formKey,
                                     child: Column(
                                       children: [
-                                        SizedBox(
-                                          height: 30,
-                                          child: Theme(
-                                            data: ThemeData(
-                                              primaryColor: Color(0xFF262C48),
-                                              primaryColorDark:
-                                                  Color(0xFF262C48),
-                                            ),
-                                            child: TextFormField(
-                                              controller: fnameController,
-                                              cursorColor: Colors.grey,
-                                              validator: (value) {
-                                                return validator
-                                                    .validateFname(value!);
-                                              },
-                                              decoration: const InputDecoration(
-                                                  labelText: 'Full name',
+                                        TextFormField(
+                                          controller: fnameController,
+                                          cursorColor: Colors.grey,
+                                          validator: (value) {
+                                            return validator
+                                                .validateFname(value!);
+                                          },
+                                          decoration: const InputDecoration(
+                                              labelText: 'Full name',
 
-                                                  // This is the normal border
-                                                  border: OutlineInputBorder(),
-                                                  labelStyle: TextStyle(
-                                                      color: Colors.grey,
-                                                      fontSize: 10),
-                                                  contentPadding:
-                                                      const EdgeInsets
-                                                              .symmetric(
-                                                          vertical: 10.0,
-                                                          horizontal: 10.0),
-                                                  // This is the error border
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 5))),
-                                            ),
-                                          ),
+                                              // This is the normal border
+                                              border: OutlineInputBorder(),
+                                              labelStyle: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 10),
+                                              isCollapsed: true,
+                                              contentPadding: EdgeInsets.all(9),
+                                              // This is the error border
+                                              errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.red,
+                                                      width: 1.5))),
                                         ),
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        SizedBox(
-                                          height: 30,
-                                          child: Theme(
-                                            data: ThemeData(
-                                              primaryColor: Color(0xFF262C48),
-                                              primaryColorDark:
-                                                  Color(0xFF262C48),
-                                            ),
-                                            child: TextFormField(
-                                              controller: usernameController,
-                                              cursorColor: Colors.grey,
-                                              validator: (value) {
-                                                return validator
-                                                    .validateFname(value!);
-                                              },
-                                              decoration: const InputDecoration(
-                                                  labelText: 'Username',
+                                        TextFormField(
+                                          controller: usernameController,
+                                          cursorColor: Colors.grey,
+                                          validator: (value) {
+                                            return validator
+                                                .validateUsername(value!);
+                                          },
+                                          decoration: const InputDecoration(
+                                              labelText: 'Username',
 
-                                                  // This is the normal border
-                                                  border: OutlineInputBorder(),
-                                                  labelStyle: TextStyle(
-                                                      color: Colors.grey,
-                                                      fontSize: 10),
-                                                  contentPadding:
-                                                      const EdgeInsets
-                                                              .symmetric(
-                                                          vertical: 10.0,
-                                                          horizontal: 10.0),
-                                                  // This is the error border
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 5))),
-                                            ),
-                                          ),
+                                              // This is the normal border
+                                              border: OutlineInputBorder(),
+                                              labelStyle: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 10),
+                                              isCollapsed: true,
+                                              contentPadding: EdgeInsets.all(9),
+                                              errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.red,
+                                                      width: 1.5))),
                                         ),
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        SizedBox(
-                                          height: 30,
-                                          child: Theme(
-                                            data: ThemeData(
-                                              primaryColor: Color(0xFF262C48),
-                                              primaryColorDark:
-                                                  Color(0xFF262C48),
-                                            ),
-                                            child: TextFormField(
-                                              controller: passwordController,
-                                              cursorColor: Colors.grey,
-                                              obscureText: true,
-                                              validator: (value) {
-                                                return validator
-                                                    .validateFname(value!);
-                                              },
-                                              decoration: const InputDecoration(
-                                                  labelText: 'Password',
+                                        TextFormField(
+                                          controller: passwordController,
+                                          cursorColor: Colors.grey,
+                                          obscureText: true,
+                                          validator: (value) {
+                                            return validator
+                                                .validatePassword(value!);
+                                          },
+                                          decoration: const InputDecoration(
+                                              labelText: 'Password',
 
-                                                  // This is the normal border
-                                                  border: OutlineInputBorder(),
-                                                  labelStyle: TextStyle(
-                                                      color: Colors.grey,
-                                                      fontSize: 10),
-                                                  contentPadding:
-                                                      const EdgeInsets
-                                                              .symmetric(
-                                                          vertical: 10.0,
-                                                          horizontal: 10.0),
-                                                  // This is the error border
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 5))),
-                                            ),
-                                          ),
+                                              // This is the normal border
+                                              border: OutlineInputBorder(),
+                                              labelStyle: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 10),
+                                              isCollapsed: true,
+                                              contentPadding: EdgeInsets.all(9),
+                                              errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.red,
+                                                      width: 1.5))),
                                         ),
                                       ],
                                     ),
@@ -292,7 +240,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                 Radius.circular(20))),
                                         child: TextButton(
                                             onPressed: () {
-                                              Navigator.pop(context);
+                                              usernameController.clear();
+                                              passwordController.clear();
+                                              fnameController.clear();
                                             },
                                             child: const Text(
                                               'Cancel',
@@ -333,30 +283,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                   _formKey.currentState!.save();
                                                 });
 
-                                                if (await MongoDBConnection
-                                                    .insertUser(
-                                                        User(
-                                                            fullname:
-                                                                fnameController
-                                                                    .text,
-                                                            username:
-                                                                usernameController
-                                                                    .text,
-                                                            password:
-                                                                passwordController
-                                                                    .text))) {
-                                                  provider.fname =
-                                                      fnameController.text;
-                                                  provider.username =
-                                                      usernameController.text;
-                                                  provider.password =
-                                                      passwordController.text;
+                                                if (await provider.insertUser(
+                                                    fnameController.text,
+                                                    usernameController.text,
+                                                    passwordController.text,
+                                                    context)) {
+                                                  usernameController.clear();
+                                                  passwordController.clear();
+                                                  fnameController.clear();
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             const LoginScreen()),
                                                   );
+                                                } else {
+                                                  var snackBar = const SnackBar(
+                                                      content: Text(
+                                                          'username already exists'));
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(snackBar);
                                                 }
                                               } else {
                                                 //    If all data are not valid then start auto validation.
@@ -379,7 +325,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     height: 15,
                                   ),
                                   const Text(
-                                    ' * Password must be alphanumeric. Minimum characters = 8. Maximum characters = 20 \n * Full name: Minimum characters = 3. Maximum characters = 50\n * Username: Minimum characters = 6. Maximum characters = 30',
+                                    ' * Password must contain alphabets and numbers with minumum 8 characters \n * Full name must contain minimum 3 characters\n * Username must contain minimum 6 characters',
                                     style: TextStyle(
                                       decoration: TextDecoration.none,
                                       fontSize: 9.0,

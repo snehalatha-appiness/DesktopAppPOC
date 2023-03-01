@@ -1,32 +1,29 @@
-import 'dart:ui';
-
+import 'package:demo_poc_app/constants/themeconstants.dart';
 import 'package:demo_poc_app/view/dashboard.dart';
-import 'package:demo_poc_app/view/forgotpassword.dart';
-import 'package:demo_poc_app/view/homescreen.dart';
-import 'package:demo_poc_app/model/usermodel.dart';
-import 'package:demo_poc_app/repository/mongodb.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/textfieldvalidators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final GlobalKey<FormState> _loginformKey = GlobalKey<FormState>();
   bool _autoValidate = false;
 
   TextEditingController unameController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController confirmpwdController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     TextFieldValidator validator = context.read<TextFieldValidator>();
@@ -91,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     height: 45,
                                   ),
                                   const Text(
-                                    'Login',
+                                    'Forgot password',
                                     style: TextStyle(
                                       decoration: TextDecoration.none,
                                       fontSize: 18.0,
@@ -108,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     },
                                     child: const Text.rich(
                                       TextSpan(
-                                        text: 'HomePage >  ',
+                                        text: 'Login >  ',
                                         style: TextStyle(
                                           decoration: TextDecoration.none,
                                           fontSize: 14.0,
@@ -117,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                         children: <TextSpan>[
                                           TextSpan(
-                                              text: 'Login',
+                                              text: 'Forgot Password',
                                               style: TextStyle(
                                                 decoration: TextDecoration.none,
                                                 color: Colors.blue,
@@ -133,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     height: 15,
                                   ),
                                   const Text(
-                                    'Please enter the below details to login',
+                                    'Please enter the below details to update your password',
                                     style: TextStyle(
                                       decoration: TextDecoration.none,
                                       fontSize: 10.0,
@@ -149,27 +146,27 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Column(
                                       children: [
                                         TextFormField(
+                                          controller: nameController,
+                                          cursorColor: Colors.grey,
+                                          validator: (value) {
+                                            return validator
+                                                .validateFname(value!);
+                                          },
+                                          decoration: ThemeConstants.setTheme(
+                                              'Fullname'),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
                                           controller: unameController,
                                           cursorColor: Colors.grey,
                                           validator: (value) {
                                             return validator
                                                 .validateUsername(value!);
                                           },
-                                          decoration: const InputDecoration(
-                                              labelText: 'Username',
-
-                                              // This is the normal border
-                                              border: OutlineInputBorder(),
-                                              labelStyle: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 10),
-                                              isCollapsed: true,
-                                              contentPadding: EdgeInsets.all(9),
-                                              // This is the error border
-                                              errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      color: Colors.red,
-                                                      width: 1.5))),
+                                          decoration: ThemeConstants.setTheme(
+                                              'Username'),
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -182,41 +179,29 @@ class _LoginScreenState extends State<LoginScreen> {
                                             return validator
                                                 .validatePassword(value!);
                                           },
-                                          decoration: const InputDecoration(
-                                              labelText: 'Password',
-                                              isCollapsed: true,
-                                              contentPadding: EdgeInsets.all(9),
-
-                                              // This is the normal border
-                                              border: OutlineInputBorder(),
-                                              labelStyle: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 10),
-                                              errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      color: Colors.red,
-                                                      width: 1.5))),
+                                          decoration: ThemeConstants.setTheme(
+                                              'New Password'),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          controller: confirmpwdController,
+                                          cursorColor: Colors.grey,
+                                          obscureText: true,
+                                          validator: (value) {
+                                            return validator
+                                                .validateConfirmPassword(
+                                                    value!, pwdController.text);
+                                          },
+                                          decoration: ThemeConstants.setTheme(
+                                              'Confirm Password'),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const ForgotPasswordScreen()));
-                                      },
-                                      child: const Text(
-                                        'Forgot Password?',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.normal,
-                                            color: Colors.blue),
-                                      )),
                                   const SizedBox(
-                                    height: 5,
+                                    height: 10,
                                   ),
                                   Row(
                                     children: [
@@ -274,25 +259,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       .save();
                                                 });
 
-                                                if (await provider.login(
-                                                    unameController.text,
-                                                    pwdController.text,
-                                                    context)) {
+                                                if (await provider
+                                                    .updatePassword(
+                                                        unameController.text,
+                                                        nameController.text,
+                                                        pwdController.text,
+                                                        context)) {
                                                   unameController.clear();
                                                   pwdController.clear();
 
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const DashboardScreen()),
-                                                  );
+                                                  Navigator.pop(context);
                                                 } else {
                                                   Future.delayed(Duration.zero,
                                                       () {
                                                     var snackBar = const SnackBar(
                                                         content: Text(
-                                                            'Please enter valid username or password'));
+                                                            'Please enter valid username or full name'));
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(snackBar);
@@ -329,14 +311,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     });
-  }
-
-  void showAlert(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (context) => const AlertDialog(
-              content: Text("Please enter valid username or password"),
-              actions: [],
-            ));
   }
 }

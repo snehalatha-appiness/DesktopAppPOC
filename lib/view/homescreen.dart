@@ -40,20 +40,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            width: 600,
-            height: MediaQuery.of(context).size.height * 0.65,
+            width: 700,
+            height: MediaQuery.of(context).size.height * 0.78,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    width: 300,
+                    width: 350,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/images/homebg.png'),
-                            fit: BoxFit.cover)),
+                            fit: BoxFit.fitHeight)),
                   ),
                   Container(
-                    width: 300,
+                    width: 350,
                     color: Colors.white,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,10 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           //           image: AssetImage('assets/images/logo.png'),
                           //           fit: BoxFit.fill)),
                           // ),
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width / 4,
-                              height: 54,
-                              child: Image.asset('assets/images/logo.png')),
+                          // SizedBox(
+                          //     width: MediaQuery.of(context).size.width / 4,
+                          //     height: 54,
+                          //     child: Image.asset('assets/images/logo.png')),
                           const SizedBox(
                             height: 5,
                           ),

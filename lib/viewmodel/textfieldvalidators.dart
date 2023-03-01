@@ -27,29 +27,47 @@ class TextFieldValidator extends ChangeNotifier {
   }
 
   String? validateFname(String value) {
-    if (value.isEmpty || value.length <= 3) {
-      return 'Please enter full name';
+    if (value.isEmpty || value.length < 3) {
+      return 'Please enter fullname';
+    }
+    return null;
+  }
+
+  String? validatePassword(String value) {
+    if (value.isEmpty) {
+      return 'Please enter password';
+    } else if (value.length <= 6) {
+      return 'Please enter valid password';
+    } else {
+      if (validatePasswordExp(value)) {
+        return null;
+      } else {
+        return 'Please enter valid password';
+      }
+    }
+  }
+
+  String? validateConfirmPassword(String value, String newpassword) {
+    if (value.isEmpty) {
+      return 'Please enter password';
+    } else if (value != newpassword) {
+      return 'Password does not match';
     }
     return null;
   }
 
   String? validateUsername(String value) {
-    if (value.isEmpty || value.length <= 6) {
+    if (value.isEmpty) {
       return 'Please enter username';
+    } else if (value.length <= 6) {
+      return 'Please enter valid username';
     }
     return null;
   }
 
-  String? validateEmail(String value) {
-    String pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = RegExp(pattern);
-    if (value.isEmpty) {
-      return 'Please enter email';
-    } else if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
-    else {
-      return null;
-    }
+  bool validatePasswordExp(String value) {
+    String pattern = r'^(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
+    RegExp regExp = new RegExp(pattern);
+    return regExp.hasMatch(value);
   }
 }

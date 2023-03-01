@@ -7,7 +7,7 @@ class UserPreferences {
   Future<bool> saveUser(User user) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.setString("userId", user.id.toString());
+    // prefs.setString("userId", user.id.toString());
     prefs.setString("fullname", user.fullname);
     prefs.setString("username", user.username);
     prefs.setString("password", user.password);
@@ -15,25 +15,21 @@ class UserPreferences {
     return true;
   }
 
-  Future<User> getUser() async {
+  Future<String> getUser() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? userId = prefs.getString("userId");
+    //String? userId = prefs.getString("userId");
     String? fullname = prefs.getString("fullname");
     String? username = prefs.getString("username");
     String? password = prefs.getString("password");
 
-    return User(
-        fullname: fullname!,
-        password: password!,
-        id: userId! as ObjectId,
-        username: username!);
+    return username!;
   }
 
   void removeUser() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.remove("userId");
+    // prefs.remove("userId");
     prefs.remove("fullname");
     prefs.remove("username");
     prefs.remove("password");
