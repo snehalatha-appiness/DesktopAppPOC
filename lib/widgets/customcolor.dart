@@ -30,7 +30,10 @@ class ColumnCustomPainter extends ColumnSegment {
           stops: <double>[0.2, 0.9]),
       const LinearGradient(
           colors: <Color>[Colors.blue, Colors.cyanAccent],
-          stops: <double>[0.2, 0.9])
+          stops: <double>[0.2, 0.9]),
+      const LinearGradient(
+          colors: <Color>[Colors.cyan, Colors.amberAccent],
+          stops: <double>[0.2, 0.9]),
     ];
 
     fillPaint!.shader =
