@@ -1,8 +1,15 @@
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view/homescreen.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view
+ * Created Date: Monday, February 27th 2023, 5:37:49 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
+
 import 'package:demo_poc_app/view/login.dart';
 import 'package:demo_poc_app/view/register.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -58,20 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // Container(
-                          //   width: 200,
-                          //   height: 50,
-                          //   // padding: const EdgeInsets.symmetric(
-                          //   //     vertical: 10, horizontal: 10),
-                          //   decoration: const BoxDecoration(
-                          //       image: DecorationImage(
-                          //           image: AssetImage('assets/images/logo.png'),
-                          //           fit: BoxFit.fill)),
-                          // ),
-                          // SizedBox(
-                          //     width: MediaQuery.of(context).size.width / 4,
-                          //     height: 54,
-                          //     child: Image.asset('assets/images/logo.png')),
                           const SizedBox(
                             height: 5,
                           ),
@@ -87,78 +80,68 @@ class _HomeScreenState extends State<HomeScreen> {
                           const SizedBox(
                             height: 5,
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()),
-                              );
-                            },
-                            child: const Text.rich(
-                              TextSpan(
-                                text: 'Already registered?  ',
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Already registered?  ',
                                 style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontSize: 12.0,
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal,
                                 ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                      text: 'Login',
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        decorationColor: Colors.blue,
-                                        fontSize: 12.0,
-                                        decorationStyle:
-                                            TextDecorationStyle.solid,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.normal,
-                                      )),
-                                  // can add more TextSpans here...
-                                ],
                               ),
-                            ),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginScreen()),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        decoration: TextDecoration.underline,
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.blue),
+                                  )),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RegisterScreen()),
-                              );
-                            },
-                            child: const Text.rich(
-                              TextSpan(
-                                text: 'New user?  ',
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'New user ?  ',
                                 style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontSize: 12.0,
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal,
                                 ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                      text: 'Register',
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        decorationColor: Colors.blue,
-                                        fontSize: 12.0,
-                                        decorationStyle:
-                                            TextDecorationStyle.solid,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.normal,
-                                      )),
-                                  // can add more TextSpans here...
-                                ],
                               ),
-                            ),
-                          )
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RegisterScreen()),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Register',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        decoration: TextDecoration.underline,
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.blue),
+                                  )),
+                            ],
+                          ),
                         ]),
                   )
                 ]),

@@ -1,3 +1,12 @@
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/viewmodel/registerprovider.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/viewmodel
+ * Created Date: Tuesday, February 28th 2023, 3:12:06 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
+
 import 'package:demo_poc_app/model/usermodel.dart';
 import 'package:demo_poc_app/repository/mongodb.dart';
 import 'package:demo_poc_app/repository/userpreferences.dart';
@@ -10,6 +19,8 @@ class RegisterProvider extends ChangeNotifier {
   String? password;
   late bool loginstate = false, loading = false;
   late SharedPreferences prefs;
+
+  //Insert user in db
   Future<bool> insertUser(String name, String username, String password,
       BuildContext context) async {
     bool val = false;
@@ -30,6 +41,7 @@ class RegisterProvider extends ChangeNotifier {
     return val;
   }
 
+// login
   Future<bool> login(
       String username, String password, BuildContext context) async {
     loading = true;
@@ -46,6 +58,7 @@ class RegisterProvider extends ChangeNotifier {
     return user.isNotEmpty;
   }
 
+//update password for the user
   Future<bool> updatePassword(String username, String fullname,
       String newpassword, BuildContext context) async {
     loading = true;

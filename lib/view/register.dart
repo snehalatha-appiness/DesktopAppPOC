@@ -1,15 +1,16 @@
-import 'dart:ui';
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view/register.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view
+ * Created Date: Tuesday, February 28th 2023, 2:01:11 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
 
-import 'package:demo_poc_app/view/homescreen.dart';
 import 'package:demo_poc_app/view/login.dart';
-import 'package:demo_poc_app/model/usermodel.dart';
-import 'package:demo_poc_app/repository/mongodb.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/textfieldvalidators.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
@@ -294,6 +295,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                   setState(() {
                                                     provider.loading = false;
                                                   });
+                                                  var snackBar = const SnackBar(
+                                                      content: Text(
+                                                          'User registered successfully'));
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(snackBar);
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(

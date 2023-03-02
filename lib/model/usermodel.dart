@@ -1,3 +1,12 @@
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/model/usermodel.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/model
+ * Created Date: Tuesday, February 28th 2023, 3:40:52 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
+
 import 'package:mongo_dart/mongo_dart.dart';
 
 class User {

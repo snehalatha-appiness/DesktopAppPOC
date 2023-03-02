@@ -1,3 +1,12 @@
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/viewmodel/salesprovider.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/viewmodel
+ * Created Date: Wednesday, March 1st 2023, 6:31:10 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
+
 import 'package:demo_poc_app/repository/salesmodel.dart';
 import 'package:flutter/material.dart';
 

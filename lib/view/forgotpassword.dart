@@ -1,10 +1,16 @@
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view/forgotpassword.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view
+ * Created Date: Wednesday, March 1st 2023, 2:59:43 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
+
 import 'package:demo_poc_app/constants/themeconstants.dart';
-import 'package:demo_poc_app/view/dashboard.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/textfieldvalidators.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
@@ -270,6 +276,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                                   setState(() {
                                                     provider.loading = false;
                                                   });
+                                                  var snackBar = const SnackBar(
+                                                      content: Text(
+                                                          'Password updated successfully'));
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(snackBar);
                                                   Navigator.pop(context);
                                                 } else {
                                                   Future.delayed(Duration.zero,

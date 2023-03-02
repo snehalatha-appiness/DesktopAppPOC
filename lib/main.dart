@@ -1,4 +1,12 @@
-import 'package:demo_poc_app/model/usermodel.dart';
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/main.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib
+ * Created Date: Monday, February 27th 2023, 5:23:46 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
+
 import 'package:demo_poc_app/repository/userpreferences.dart';
 import 'package:demo_poc_app/view/dashboard.dart';
 import 'package:demo_poc_app/view/homescreen.dart';
@@ -13,6 +21,7 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //establishing connection with mongodb database and collection
   await MongoDBConnection.dbConnect();
   runApp(MyApp());
 }
@@ -49,7 +58,7 @@ class MyApp extends StatelessWidget {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
                       case ConnectionState.waiting:
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       default:
                         // if (snapshot.hasError) {
                         //   return Text('Error: ${snapshot.error}');

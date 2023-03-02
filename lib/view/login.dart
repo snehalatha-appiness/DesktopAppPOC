@@ -1,16 +1,17 @@
-import 'dart:ui';
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view/login.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view
+ * Created Date: Tuesday, February 28th 2023, 2:01:18 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
 
 import 'package:demo_poc_app/view/dashboard.dart';
 import 'package:demo_poc_app/view/forgotpassword.dart';
-import 'package:demo_poc_app/view/homescreen.dart';
-import 'package:demo_poc_app/model/usermodel.dart';
-import 'package:demo_poc_app/repository/mongodb.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/textfieldvalidators.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
@@ -104,7 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.pop(context);
+                                      Navigator.pushReplacementNamed(
+                                          context, '/home');
                                     },
                                     child: const Text.rich(
                                       TextSpan(
@@ -285,6 +287,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   setState(() {
                                                     provider.loading = false;
                                                   });
+                                                  var snackBar = const SnackBar(
+                                                      content: Text(
+                                                          'User loggedIn successfully'));
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(snackBar);
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(

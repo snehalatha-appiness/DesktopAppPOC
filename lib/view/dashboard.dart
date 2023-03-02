@@ -1,3 +1,12 @@
+/*
+ * Filename: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view/dashboard.dart
+ * Path: /Users/appiness1/Documents/Projects/desktopApp/demo_poc/demo_poc_app/lib/view
+ * Created Date: Tuesday, February 28th 2023, 7:01:22 pm
+ * Author: Snehalatha
+ * 
+ * Copyright (c) 2023 Appiness
+ */
+
 import 'package:demo_poc_app/constants/themeconstants.dart';
 import 'package:demo_poc_app/repository/salesmodel.dart';
 import 'package:demo_poc_app/repository/userpreferences.dart';
@@ -5,8 +14,6 @@ import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/salesprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -18,16 +25,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  /*
-  2015	3,117,550	6.36
-2016	3,345,460	7.31
-2017	3,670,028	9.70
-2018	3,983,507	8.54
-2019	3,528,040	-11.43
-2020	2,858,011	-18.99
-
-  */
-
   List<TextEditingController> _yearcontrollers = [];
   @override
   Widget build(BuildContext context) {
@@ -42,7 +39,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 SystemUiOverlayStyle(statusBarColor: Colors.pinkAccent),
             backgroundColor: Colors.blue.shade500,
             elevation: 0.0,
-            title: Text(
+            title: const Text(
               'Dashboard',
             ),
             centerTitle: false,
@@ -109,8 +106,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   child: Row(
                                     children: [
                                       Flexible(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          color: Colors.white,
+                                          margin: const EdgeInsets.all(8.0),
                                           child: TextFormField(
                                             cursorColor: Colors.grey,
                                             initialValue:
@@ -128,8 +126,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         ),
                                       ),
                                       Flexible(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          margin: const EdgeInsets.all(8.0),
+                                          color: Colors.white,
                                           child: TextFormField(
                                             cursorColor: Colors.grey,
                                             onChanged: ((value) {
@@ -142,8 +141,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                             initialValue: prov
                                                 .salesData[index].sales
                                                 .toString(),
-                                            decoration: ThemeConstants.setTheme(
-                                                'sales'),
+                                            decoration: const InputDecoration(
+                                              labelText: 'sales',
+
+                                              // This is the normal border
+                                              border:
+                                                  const OutlineInputBorder(),
+                                              labelStyle: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 10),
+                                              isCollapsed: true,
+                                              fillColor: Colors.white,
+                                              contentPadding: EdgeInsets.all(9),
+                                            ),
                                           ),
                                         ),
                                       ),
