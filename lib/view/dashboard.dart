@@ -12,6 +12,7 @@ import 'package:demo_poc_app/constants/themeconstants.dart';
 import 'package:demo_poc_app/model/salesmodel.dart';
 import 'package:demo_poc_app/repository/userpreferences.dart';
 import 'package:demo_poc_app/viewmodel/salesprovider.dart';
+import 'package:demo_poc_app/widgets/customcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -195,24 +196,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 tooltipBehavior: TooltipBehavior(enable: true),
                 series: <ChartSeries<SalesData, String>>[
                   ColumnSeries<SalesData, String>(
-                    // gradient: LinearGradient(
-                    //   colors: [
-                    //     HexColor('#428AC9'),
-                    //     HexColor('#E64E90'),
-                    //     HexColor('#EFA63B')
-                    //   ],
-                    // ),
+                    onCreateRenderer: (ChartSeries<SalesData, String> series) {
+                      return _CustomColumnSeriesRenderer();
+                    },
                     dataSource: data,
                     xValueMapper: (SalesData sales, _) => sales.year,
                     yValueMapper: (SalesData sales, _) => sales.sales,
                     name: '',
                     dataLabelSettings: DataLabelSettings(isVisible: true),
-                    color: Color.fromRGBO(8, 142, 255, 1),
+                    // color: Color.fromRGBO(8, 142, 255, 1),
                   )
                 ]),
           ),
         ),
       ),
     );
+  }
+}
+
+class _CustomColumnSeriesRenderer extends ColumnSeriesRenderer {
+  _CustomColumnSeriesRenderer();
+  @override
+  ChartSegment createSegment() {
+    return ColumnCustomPainter();
   }
 }
