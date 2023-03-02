@@ -2,6 +2,9 @@
 
 A flutter desktop application featuring user registration,user login and a sales report dashboard using mongodb.
 
+## Screenshots
+<img width="1108" alt="homess" src="https://user-images.githubusercontent.com/113968257/222366612-48c1b560-c8e4-476b-b50c-83c097c9b49f.png">
+
 ## Getting Started
 
 - The project uses provider as state management.
