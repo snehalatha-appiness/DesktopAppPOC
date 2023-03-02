@@ -37,7 +37,7 @@ A flutter desktop application featuring user registration,user login and a sales
 ## Technical tools
 
 - Built with Flutter (v3.7.1) and MongoDB database (v5.0) for macOS.
-- Uses Cubit for state management.
+- Uses Providers for state management.
 - MongoDB plugin handles all the database operations.
 - Shared preferences for user session storage.
 - Syncfusion charts for the dashboard pie charts
