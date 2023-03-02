@@ -14,28 +14,25 @@ A flutter desktop application featuring user registration,user login and a sales
 
 ## Getting Started
 
-The project uses provider as state management.
-App Architecture
-viewmodel - consist all the provider classes.
-view- consist of all the ui screens .
-model - consist of model classes
-constants - consist of constants files.
-repository - consist of all the db operations .
-Plugins used - providers,mongo-dart,http,syncfusion chart.
+- The project uses provider as state management.
+- App Architecture
+- viewmodel - consist all the provider classes.
+- view- consist of all the ui screens .
+- model - consist of model classes
+- constants - consist of constants files.
+- repository - consist of all the db operations .
+- Plugins used - providers,mongo-dart,http,syncfusion chart.
 
 # Requirements
 
 - Desktop running Mac, Linux or Windows. [Mac preferred]
-  Flutter SDK installed (Flutter 3 or above)
-  VSCode with flutter and dart plugin
+
+* Flutter SDK installed (Flutter 3 or above)
+* VSCode with flutter and dart plugin
 
 # How to install and run
 
-Clone the repo/Download as zip and extract.
-Open in VSCode.
-In terminal, run 'flutter pub get' at project folder
-Run the application in the MacOS or Windows environment
-
-Installation
-Clone or download the zip file from the github
-run the app using command - flutter run macos / flutter run windows
+- Clone the repo/Download as zip and extract.
+- Open in VSCode.
+- In terminal, run 'flutter pub get' at project folder
+- Run the application in the MacOS or Windows environment
