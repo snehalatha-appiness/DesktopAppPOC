@@ -1,4 +1,4 @@
-# Techcloudpro desktop application
+# Demo desktop application
 
 A flutter desktop application featuring user registration,user login and a sales report dashboard using mongodb.
 
