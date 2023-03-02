@@ -76,8 +76,11 @@ class MongoDBConnection {
     }
 
     print('info');
-    print(information!['username']);
-    print(await coll.find().toList());
+    if (information != null) {
+      print(information!['username']);
+      print(await coll.find().toList());
+    }
+
     await db.close();
     return information != null;
   }

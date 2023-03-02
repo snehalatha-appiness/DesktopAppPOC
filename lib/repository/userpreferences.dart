@@ -40,4 +40,10 @@ class UserPreferences {
     String? token = prefs.getString("username");
     return token!;
   }
+
+  Future<String> getFullname() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString("fullname");
+    return token!;
+  }
 }

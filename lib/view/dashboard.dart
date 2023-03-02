@@ -32,6 +32,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     RegisterProvider provider = context.read<RegisterProvider>();
+    Future<String> getUserData() => UserPreferences().getFullname();
     return Consumer<SalesProvider>(
         builder: (BuildContext context, prov, Widget? child) {
       return Scaffold(
@@ -39,20 +40,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
             automaticallyImplyLeading: false,
             systemOverlayStyle:
                 SystemUiOverlayStyle(statusBarColor: Colors.pinkAccent),
-            backgroundColor: Colors.pinkAccent,
+            backgroundColor: Colors.blue.shade500,
             elevation: 0.0,
             title: Text(
               'Dashboard',
             ),
+            centerTitle: false,
             actions: [
-              IconButton(
-                icon: const Icon(Icons.logout_outlined),
-                tooltip: 'logout',
-                onPressed: () {
-                  UserPreferences().removeUser();
+              Row(
+                children: [
+                  FutureBuilder(
+                      future: getUserData(),
+                      builder: (context, snapshot) {
+                        if (snapshot.data != null) {
+                          return Text('${snapshot.data}');
+                        } else {
+                          return Text('');
+                        }
+                      }),
+                  IconButton(
+                    icon: const Icon(Icons.logout),
+                    tooltip: 'logout',
+                    color: Colors.red,
+                    onPressed: () {
+                      UserPreferences().removeUser();
 
-                  Navigator.pushReplacementNamed(context, '/home');
-                },
+                      Navigator.pushReplacementNamed(context, '/home');
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -107,7 +123,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               setState(() {});
                                             }),
                                             decoration:
-                                                ThemeConstants.setTheme('Year'),
+                                                ThemeConstants.setTheme('year'),
                                           ),
                                         ),
                                       ),
