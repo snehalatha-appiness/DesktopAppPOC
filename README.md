@@ -23,9 +23,18 @@ constants - consist of constants files.
 repository - consist of all the db operations .
 Plugins used - providers,mongo-dart,http,syncfusion chart.
 
-Prerequities
-Vscode
-Flutter sdk
+# Requirements
+
+- Desktop running Mac, Linux or Windows. [Mac preferred]
+  Flutter SDK installed (Flutter 3 or above)
+  VSCode with flutter and dart plugin
+
+# How to install and run
+
+Clone the repo/Download as zip and extract.
+Open in VSCode.
+In terminal, run 'flutter pub get' at project folder
+Run the application in the MacOS or Windows environment
 
 Installation
 Clone or download the zip file from the github

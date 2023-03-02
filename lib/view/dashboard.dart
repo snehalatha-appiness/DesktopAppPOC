@@ -14,6 +14,7 @@ import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/salesprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -25,10 +26,8 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  List<TextEditingController> _yearcontrollers = [];
   @override
   Widget build(BuildContext context) {
-    RegisterProvider provider = context.read<RegisterProvider>();
     Future<String> getUserData() => UserPreferences().getFullname();
     return Consumer<SalesProvider>(
         builder: (BuildContext context, prov, Widget? child) {
@@ -36,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             systemOverlayStyle:
-                SystemUiOverlayStyle(statusBarColor: Colors.pinkAccent),
+                const SystemUiOverlayStyle(statusBarColor: Colors.pinkAccent),
             backgroundColor: Colors.blue.shade500,
             elevation: 0.0,
             title: const Text(
@@ -191,22 +190,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
             padding: const EdgeInsets.all(10.0),
             child: SfCartesianChart(
                 primaryXAxis: CategoryAxis(),
-                // Chart title
                 title: ChartTitle(text: 'Car Sales Report'),
-                // Enable legend
                 legend: Legend(isVisible: true),
-                // Enable tooltip
                 tooltipBehavior: TooltipBehavior(enable: true),
                 series: <ChartSeries<SalesData, String>>[
                   ColumnSeries<SalesData, String>(
-                      dataSource: data,
-                      xValueMapper: (SalesData sales, _) => sales.year,
-                      yValueMapper: (SalesData sales, _) => sales.sales,
-                      name: '',
-
-                      // Enable data label
-                      dataLabelSettings: DataLabelSettings(isVisible: true),
-                      color: Color.fromRGBO(8, 142, 255, 1))
+                    gradient: LinearGradient(
+                      colors: [
+                        HexColor('#428AC9'),
+                        HexColor('#E64E90'),
+                        HexColor('#EFA63B')
+                      ],
+                    ),
+                    dataSource: data,
+                    xValueMapper: (SalesData sales, _) => sales.year,
+                    yValueMapper: (SalesData sales, _) => sales.sales,
+                    name: '',
+                    dataLabelSettings: DataLabelSettings(isVisible: true),
+                    // color: Color.fromRGBO(8, 142, 255, 1),
+                  )
                 ]),
           ),
         ),
