@@ -6,6 +6,7 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//ForgotPassword screen demonstrates textfields to update password
 
 import 'package:demo_poc_app/constants/themeconstants.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';

@@ -6,7 +6,7 @@
  * 
  * Copyright (c) 2023 Appiness
  */
-
+//Sales data model
 class SalesData {
   SalesData(this.year, this.sales);
 

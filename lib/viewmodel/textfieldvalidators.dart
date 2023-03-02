@@ -6,42 +6,20 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//TextValidations consist of all the validations used for the fields
 
 import 'package:flutter/foundation.dart';
 
 class TextFieldValidator extends ChangeNotifier {
-  String? validateMobile(String value) {
-    String patttern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-    RegExp regExp = RegExp(patttern);
-    if (value.isEmpty) {
-      return 'Please enter mobile number';
-    } else if (!regExp.hasMatch(value)) {
-      return 'Please enter valid mobile number';
-    }
-    return null;
-  }
-
-  String? validateOtp(String value) {
-    String patttern = r'(^(?:[+0]9)?[0-9]{4,4}$)';
-    RegExp regExp = RegExp(patttern);
-    String otp = '0000';
-    if (value.isEmpty) {
-      return 'Please enter Otp';
-    } else if (!regExp.hasMatch(value)) {
-      return 'Please enter valid Otp';
-    } else if (value != otp) {
-      return 'Please enter valid Otp';
-    }
-    return null;
-  }
-
+  //validation for full name
   String? validateFname(String value) {
     if (value.isEmpty || value.length < 3) {
-      return 'Please enter fullname';
+      return 'Please enter full name';
     }
     return null;
   }
 
+  //validation for password
   String? validatePassword(String value) {
     if (value.isEmpty) {
       return 'Please enter password';
@@ -56,6 +34,7 @@ class TextFieldValidator extends ChangeNotifier {
     }
   }
 
+  //validation for confirm password
   String? validateConfirmPassword(String value, String newpassword) {
     if (value.isEmpty) {
       return 'Please enter password';
@@ -65,6 +44,7 @@ class TextFieldValidator extends ChangeNotifier {
     return null;
   }
 
+//validation for username
   String? validateUsername(String value) {
     if (value.isEmpty) {
       return 'Please enter username';
@@ -74,6 +54,7 @@ class TextFieldValidator extends ChangeNotifier {
     return null;
   }
 
+//regualar expression pattern matching for  password
   bool validatePasswordExp(String value) {
     String pattern = r'^(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
     RegExp regExp = new RegExp(pattern);

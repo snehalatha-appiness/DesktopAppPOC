@@ -6,6 +6,7 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//HomeScreen the first screen of the app navigates to login/register
 
 import 'package:demo_poc_app/view/login.dart';
 import 'package:demo_poc_app/view/register.dart';

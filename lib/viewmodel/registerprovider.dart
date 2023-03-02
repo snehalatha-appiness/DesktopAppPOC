@@ -6,6 +6,7 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//RegisterProvider manages th state of the overall login/register process
 
 import 'package:demo_poc_app/model/usermodel.dart';
 import 'package:demo_poc_app/repository/mongodb.dart';

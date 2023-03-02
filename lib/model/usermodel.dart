@@ -6,6 +6,7 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//Defines user model with user properties
 
 import 'package:mongo_dart/mongo_dart.dart';
 

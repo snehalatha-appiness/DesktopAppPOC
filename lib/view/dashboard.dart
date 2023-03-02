@@ -6,11 +6,11 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//Dashboard shows sales chart and an editable fields and generate the graph with new values
 
 import 'package:demo_poc_app/constants/themeconstants.dart';
-import 'package:demo_poc_app/repository/salesmodel.dart';
+import 'package:demo_poc_app/model/salesmodel.dart';
 import 'package:demo_poc_app/repository/userpreferences.dart';
-import 'package:demo_poc_app/viewmodel/registerprovider.dart';
 import 'package:demo_poc_app/viewmodel/salesprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

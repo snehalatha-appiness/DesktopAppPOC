@@ -6,8 +6,8 @@
  * 
  * Copyright (c) 2023 Appiness
  */
-
-import 'package:demo_poc_app/repository/salesmodel.dart';
+//SalesProvider updates the sales graph in the dashboard
+import 'package:demo_poc_app/model/salesmodel.dart';
 import 'package:flutter/material.dart';
 
 class SalesProvider extends ChangeNotifier {

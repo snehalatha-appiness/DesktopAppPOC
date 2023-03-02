@@ -6,6 +6,7 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//Shared preferences file for storing user data locally
 
 import 'package:demo_poc_app/model/usermodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -6,6 +6,7 @@
  * 
  * Copyright (c) 2023 Appiness
  */
+//RegisterScreen enables user to register
 
 import 'package:demo_poc_app/view/login.dart';
 import 'package:demo_poc_app/viewmodel/registerprovider.dart';
