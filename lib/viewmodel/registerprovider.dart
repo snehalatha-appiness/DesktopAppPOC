@@ -8,11 +8,12 @@ class RegisterProvider extends ChangeNotifier {
   String? usname;
   String? fname;
   String? password;
-  late bool loginstate = false;
+  late bool loginstate = false, loading = false;
   late SharedPreferences prefs;
   Future<bool> insertUser(String name, String username, String password,
       BuildContext context) async {
     bool val = false;
+    loading = true;
     var snackBar = const SnackBar(content: Text('Please wait..'));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
     await MongoDBConnection.checkusername(username, password)
@@ -31,6 +32,7 @@ class RegisterProvider extends ChangeNotifier {
 
   Future<bool> login(
       String username, String password, BuildContext context) async {
+    loading = true;
     var snackBar = const SnackBar(content: Text('Please wait..'));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
     List<String> user = await MongoDBConnection.getUser(username, password);
@@ -46,6 +48,7 @@ class RegisterProvider extends ChangeNotifier {
 
   Future<bool> updatePassword(String username, String fullname,
       String newpassword, BuildContext context) async {
+    loading = true;
     var snackBar = const SnackBar(content: Text('Please wait..'));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
     bool val =

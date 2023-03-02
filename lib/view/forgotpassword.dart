@@ -267,11 +267,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                                         context)) {
                                                   unameController.clear();
                                                   pwdController.clear();
-
+                                                  setState(() {
+                                                    provider.loading = false;
+                                                  });
                                                   Navigator.pop(context);
                                                 } else {
                                                   Future.delayed(Duration.zero,
                                                       () {
+                                                    setState(() {
+                                                      provider.loading = false;
+                                                    });
                                                     var snackBar = const SnackBar(
                                                         content: Text(
                                                             'Please enter valid username or full name'));
@@ -295,6 +300,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                                   color: Colors.white),
                                             )),
                                       ),
+                                      provider.loading
+                                          ? const SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircularProgressIndicator(
+                                                  color: Colors.orange))
+                                          : const SizedBox.shrink(),
                                     ],
                                   ),
                                   const SizedBox(

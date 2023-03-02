@@ -282,7 +282,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     context)) {
                                                   unameController.clear();
                                                   pwdController.clear();
-
+                                                  setState(() {
+                                                    provider.loading = false;
+                                                  });
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
@@ -292,6 +294,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 } else {
                                                   Future.delayed(Duration.zero,
                                                       () {
+                                                    setState(() {
+                                                      provider.loading = false;
+                                                    });
                                                     var snackBar = const SnackBar(
                                                         content: Text(
                                                             'Please enter valid username or password'));
@@ -315,6 +320,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   color: Colors.white),
                                             )),
                                       ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      provider.loading
+                                          ? const SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircularProgressIndicator(
+                                                  color: Colors.orange))
+                                          : const SizedBox.shrink(),
                                     ],
                                   ),
                                   const SizedBox(

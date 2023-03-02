@@ -291,6 +291,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                   usernameController.clear();
                                                   passwordController.clear();
                                                   fnameController.clear();
+                                                  setState(() {
+                                                    provider.loading = false;
+                                                  });
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
@@ -298,6 +301,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                             const LoginScreen()),
                                                   );
                                                 } else {
+                                                  setState(() {
+                                                    provider.loading = false;
+                                                  });
                                                   var snackBar = const SnackBar(
                                                       content: Text(
                                                           'username already exists'));
@@ -319,6 +325,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                   color: Colors.white),
                                             )),
                                       ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      provider.loading
+                                          ? const SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircularProgressIndicator(
+                                                  color: Colors.orange))
+                                          : const SizedBox.shrink(),
                                     ],
                                   ),
                                   const SizedBox(
