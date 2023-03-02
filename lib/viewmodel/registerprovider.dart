@@ -37,6 +37,9 @@ class RegisterProvider extends ChangeNotifier {
     if (user.isNotEmpty) {
       usname = username;
       loginstate = true;
+      User users =
+          User(fullname: user[2], username: user[0], password: user[1]);
+      UserPreferences().saveUser(users);
     }
     return user.isNotEmpty;
   }

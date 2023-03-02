@@ -202,6 +202,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   TextButton(
                                       onPressed: () {
+                                        unameController.clear();
+                                        pwdController.clear();
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(

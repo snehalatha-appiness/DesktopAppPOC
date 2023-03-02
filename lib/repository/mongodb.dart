@@ -97,9 +97,14 @@ class MongoDBConnection {
     var information = await coll.findOne(where.eq('username', username));
     await db.close();
     List<String> infoList = [];
+    User user;
     if (information != null) {
       if (information['password'] == password) {
-        infoList = [information['username'], information['password']];
+        infoList = [
+          information['username'],
+          information['password'],
+          information['fullname']
+        ];
       }
     }
     print(infoList);
