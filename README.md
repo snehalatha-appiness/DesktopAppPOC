@@ -1,4 +1,4 @@
-# Demo desktop application
+# Demo desktop app
 
 A flutter desktop application featuring user registration,user login and a sales report dashboard using mongodb.
 
