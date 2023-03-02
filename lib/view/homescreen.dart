@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                'Already registered?  ',
+                                'Already registered?',
                                 style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontSize: 12.0,
@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                'New user ?  ',
+                                'New user?',
                                 style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontSize: 12.0,

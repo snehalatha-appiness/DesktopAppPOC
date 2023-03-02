@@ -195,19 +195,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 tooltipBehavior: TooltipBehavior(enable: true),
                 series: <ChartSeries<SalesData, String>>[
                   ColumnSeries<SalesData, String>(
-                    gradient: LinearGradient(
-                      colors: [
-                        HexColor('#428AC9'),
-                        HexColor('#E64E90'),
-                        HexColor('#EFA63B')
-                      ],
-                    ),
+                    // gradient: LinearGradient(
+                    //   colors: [
+                    //     HexColor('#428AC9'),
+                    //     HexColor('#E64E90'),
+                    //     HexColor('#EFA63B')
+                    //   ],
+                    // ),
                     dataSource: data,
                     xValueMapper: (SalesData sales, _) => sales.year,
                     yValueMapper: (SalesData sales, _) => sales.sales,
                     name: '',
                     dataLabelSettings: DataLabelSettings(isVisible: true),
-                    // color: Color.fromRGBO(8, 142, 255, 1),
+                    color: Color.fromRGBO(8, 142, 255, 1),
                   )
                 ]),
           ),
