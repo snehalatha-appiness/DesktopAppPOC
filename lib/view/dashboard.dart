@@ -56,9 +56,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         }
                       }),
                   IconButton(
-                    icon: const Icon(Icons.logout),
+                    icon: const Icon(
+                      Icons.logout,
+                      size: 24,
+                    ),
                     tooltip: 'logout',
-                    color: Colors.red,
+                    color: Colors.white,
                     onPressed: () {
                       UserPreferences().removeUser();
 
@@ -200,8 +203,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       xValueMapper: (SalesData sales, _) => sales.year,
                       yValueMapper: (SalesData sales, _) => sales.sales,
                       name: '',
+
                       // Enable data label
-                      dataLabelSettings: DataLabelSettings(isVisible: true))
+                      dataLabelSettings: DataLabelSettings(isVisible: true),
+                      color: Color.fromRGBO(8, 142, 255, 1))
                 ]),
           ),
         ),
