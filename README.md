@@ -40,9 +40,6 @@ A flutter desktop application featuring user registration,user login and a sales
 - Uses Providers for state management.
 - MongoDB plugin handles all the database operations.
 - Shared preferences for user session storage.
-- Syncfusion charts for the dashboard pie charts
+- Syncfusion charts for the dashboard bar graph.
 
-## Screenshots
 
-![Getting Started](./images/)
-![Getting Started](images/img.jpg)
