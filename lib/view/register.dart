@@ -152,6 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         TextFormField(
                                           controller: fnameController,
                                           cursorColor: Colors.grey,
+                                          style: TextStyle(fontSize: 16),
                                           validator: (value) {
                                             return validator
                                                 .validateFname(value!);
